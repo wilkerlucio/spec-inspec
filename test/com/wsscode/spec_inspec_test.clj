@@ -17,6 +17,8 @@
 
 (deftest test-spec->root-sym
   (is (= (spec->root-sym ::number) `int?))
+  (is (= (spec->root-sym int?) `int?))
+  (is (= (spec->root-sym (s/spec int?)) `int?))
   (is (= (spec->root-sym ::number-strict) `int?))
   (is (= (spec->root-sym ::derived) `int?)))
 

@@ -15,7 +15,9 @@
 (defn safe-form
   "Return the spec form or nil."
   [spec]
-  (if (contains? (s/registry) spec)
+  (if (or (contains? (s/registry) spec)
+          (fn? spec)
+          (s/spec? spec))
     (s/form spec)))
 
 (defn form->spec
